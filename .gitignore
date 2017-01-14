@@ -9,9 +9,16 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
-/tmp/*
 !/log/.keep
+/tmp/*
 !/tmp/.keep
+.env
+/coverage
+/spec/examples.txt
 
 # Ignore Byebug command history file.
 .byebug_history
+
+/node_modules
+/app/assets/javascripts/bundle.js
+/react/coverage
