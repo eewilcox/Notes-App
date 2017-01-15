@@ -67,7 +67,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:4567/folders.json')
+    fetch('/api/v1/folders')
       .then(response => {
         if (response.ok) {
           return response;
@@ -76,6 +76,7 @@ class App extends Component {
       .then(response => response.json())
       .then(body => {
         let data = body;
+
         this.setState({ folderData: data });
       });
   }
