@@ -12,11 +12,10 @@ class FolderList extends Component {
   }
 
   render() {
-    
-    let folders;
-    if (this.props.folderData.folders) {
-      folders = this.props.folderData.folders.map(folder => {
 
+    let folders;
+    if (this.props.folderData) {
+      folders = this.props.folderData.map(folder => {
         let handleFolderClick = () => {
           this.props.handleFolderClick(folder.id);
         };
