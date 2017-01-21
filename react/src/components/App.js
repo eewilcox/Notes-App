@@ -9,6 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       folderData: [],
+      name: "",
       notesData: [],
       selectedFolderId: null,
     };
@@ -16,40 +17,30 @@ class App extends Component {
     this.handleFolderNew = this.handleFolderNew.bind(this);
     this.handleFolderClick = this.handleFolderClick.bind(this);
     this.handleNoteNew = this.handleNoteNew.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
   }
 
   handleNoteNew() {alert("note created");}
 
-  handleFolderNew(event) {
-    let data = document.getElementById("newFolderData").value;
-
-    let newData = {
-      "folder": {
-        "name": data
-      }
-    };
-
-    let jsonStringData = JSON.stringify(newData);
-
-    fetch('http://localhost:4567/folders.json', {
-      method: 'post',
-      body: jsonStringData
-    }).then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage);
-          throw(error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        console.log(body);
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  handleNameChange(event) {
+    let newName = event.target.value;
+    this.setState({ name: newName });
   }
 
+  handleFolderNew(event) {
+    event.preventDefault();
+    let fetchBody = { name: this.state.name };
+    let newFolders = [];
+    fetch('/api/v1/folders',
+      { method: "POST",
+      body: JSON.stringify(fetchBody) })
+      .then(function(response) {
+        newFolders = response.json();
+        return newFolders;
+      }).then((response) => this.setState({
+        folderData: response,
+      }));
+  }
 
   handleFolderClick(id) {
     fetch(`http://localhost:4567/folders/${id}/notes.json`)
@@ -95,6 +86,7 @@ class App extends Component {
         </div>
         <NewFolder
           handleFolderNew={this.handleFolderNew}
+          handleNameChange={this.handleNameChange}
         />
         <NewNote
           handleNoteNew={this.handleNoteNew}
