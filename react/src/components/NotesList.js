@@ -76,7 +76,7 @@ class NotesList extends Component {
     }
 
     return(
-      <div className="column small-9">
+      <div className="column small-12">
         <div className="column small-6">
           {notes}
         </div>

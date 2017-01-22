@@ -75,22 +75,24 @@ class App extends Component {
   render(){
 
     return (
-      <div id="container" className="row callout column small-12">
-        <div className="column small-12">
-          <FolderList
-            folderData={this.state.folderData}
-            selectedFolderId={this.state.selectedFolderId}
-            handleFolderClick={this.handleFolderClick}
-            notesData={this.state.notesData}
+      <div id="container">
+        <div className="row columns small-5">
+          <NewNote
+            handleNoteNew={this.handleNoteNew}
           />
         </div>
-        <NewFolder
-          handleFolderNew={this.handleFolderNew}
-          handleNameChange={this.handleNameChange}
+        <FolderList
+          folderData={this.state.folderData}
+          selectedFolderId={this.state.selectedFolderId}
+          handleFolderClick={this.handleFolderClick}
+          notesData={this.state.notesData}
         />
-        <NewNote
-          handleNoteNew={this.handleNoteNew}
-        />
+        <div className="columns small-12">
+          <NewFolder
+            handleFolderNew={this.handleFolderNew}
+            handleNameChange={this.handleNameChange}
+          />
+        </div>
       </div>
     );
   }

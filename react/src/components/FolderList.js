@@ -42,7 +42,9 @@ class FolderList extends Component {
 
     return(
       <div>
-        {folders}
+        <div className="columns small-3">
+          {folders}
+        </div>
         <div className="column small-9">
           <NotesList
             selectedFolderId={this.props.selectedFolderId}

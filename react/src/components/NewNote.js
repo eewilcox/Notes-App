@@ -3,20 +3,19 @@ import React from "react";
 const NewNote = (props) => {
 
   return(
-    <div className="row callout">
-      <button onClick={props.handleNoteNew} className="small-4 columns button">
-        <i className="column fa fa-sticky-note-o"></i>
-        New Note
-      </button>
-
-      <form>
-        <div className="small-4 columns">
+    <div>
+      <form className="row columns small-12">
+        <div>
           <label  className="right">Search:</label>
         </div>
-        <div className="small-8 columns">
+        <div>
           <input type="text" placeholder="search here"></input>
         </div>
       </form>
+
+      <div>
+        <button onClick={props.handleNoteNew} className="small-6 columns button">New Note</button>
+      </div>
     </div>
   )
 }
