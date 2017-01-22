@@ -10,17 +10,23 @@ class App extends Component {
     this.state = {
       folderData: [],
       name: "",
+      body: "",
       notesData: [],
       selectedFolderId: null,
     };
 
     this.handleFolderNew = this.handleFolderNew.bind(this);
     this.handleFolderClick = this.handleFolderClick.bind(this);
-    this.handleNoteNew = this.handleNoteNew.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleBodyChange = this.handleBodyChange.bind(this);
+    this.handleNoteNew = this.handleNoteNew.bind(this);
   }
 
-  handleNoteNew() {alert("note created");}
+
+  handleBodyChange(event) {
+    let newBody = event.target.value;
+    this.setState({ body: newBody });
+  }
 
   handleNameChange(event) {
     let newName = event.target.value;
@@ -42,6 +48,42 @@ class App extends Component {
       }));
   }
 
+  // handleNoteNew(event) {
+  //   event.preventDefault();
+  //   let fetchBody = { body: this.state.body };
+  //   let newNotes = [];
+  //   fetch(`/api/v1/folders/${this.state.selectedFolderId}/notes`,
+  //     { method: "POST",
+  //     body: JSON.stringify(fetchBody) })
+  //     .then(function(response) {
+  //       newNotes = response.json();
+  //       return newNotes;
+  //     }).then((response) => this.setState({
+  //       notesData: response,
+  //     }));
+  // }
+
+  handleNoteNew(event) {
+    event.preventDefault();
+    let data = document.getElementById("newNote").value;
+
+    let newData = {
+      "note": {
+        "body": data
+      }
+    };
+    let newNotes = [];
+    fetch(`/api/v1/folders/${this.state.selectedFolderId}/notes`,
+      { method: "POST",
+      body: JSON.stringify(newData) })
+      .then(function(response) {
+        newNotes = response.json();
+        return newNotes;
+      }).then((response) => this.setState({
+        notesData: response,
+      }));
+  }
+
   handleFolderClick(id) {
     fetch(`/api/v1/folders/${id}/notes`)
       .then(response => {
@@ -56,6 +98,7 @@ class App extends Component {
         this.setState({selectedFolderId: id});
       });
   }
+
 
   componentDidMount() {
     fetch('/api/v1/folders')
@@ -72,13 +115,15 @@ class App extends Component {
       });
   }
 
+
   render(){
 
     return (
       <div id="container">
-        <div className="row columns small-5">
+        <div className="row columns small-12">
           <NewNote
             handleNoteNew={this.handleNoteNew}
+            handleBodyChange={this.handleBodyChange}
           />
         </div>
         <FolderList
@@ -86,6 +131,8 @@ class App extends Component {
           selectedFolderId={this.state.selectedFolderId}
           handleFolderClick={this.handleFolderClick}
           notesData={this.state.notesData}
+          handleBodyChange={this.handleBodyChange}
+          handleNoteNew={this.handleNoteNew}
         />
         <div className="columns small-12">
           <NewFolder

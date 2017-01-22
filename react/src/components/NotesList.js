@@ -30,8 +30,8 @@ class NotesList extends Component {
 
     let notes;
     if (this.props.notesData) {
-
       notes = this.props.notesData.map(note => {
+        
 
         let handleNoteClick = () => {
           this.handleNoteClick(note.id);
@@ -69,6 +69,8 @@ class NotesList extends Component {
             timestamp={note.updated_at}
             handleDelete={this.handleDelete}
             handleUpdate={this.handleUpdate}
+            handleBodyChange={this.props.handleBodyChange}
+            handleNoteNew={this.props.handleNoteNew}
             />
           )
         }

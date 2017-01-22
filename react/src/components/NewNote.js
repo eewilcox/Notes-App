@@ -12,9 +12,13 @@ const NewNote = (props) => {
           <input type="text" placeholder="search here"></input>
         </div>
       </form>
-
-      <div>
-        <button onClick={props.handleNoteNew} className="small-6 columns button">New Note</button>
+      <div className="small-4 columns">
+        <div className="small-3 columns">
+          <input onClick={props.handleNoteNew} type="submit"></input>
+        </div>
+        <div className="small-9 columns">
+          <input id="newNote" type="text" placeholder="New Note"></input>
+        </div>
       </div>
     </div>
   )

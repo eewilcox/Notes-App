@@ -9,7 +9,11 @@ class FolderList extends Component {
     this.state = {
 
     };
+
+
   }
+
+
 
   render() {
 
@@ -49,6 +53,8 @@ class FolderList extends Component {
           <NotesList
             selectedFolderId={this.props.selectedFolderId}
             notesData={this.props.notesData}
+            handleBodyChange={this.props.handleBodyChange}
+            handleNoteNew={this.props.handleNoteNew}
           />
         </div>
       </div>

@@ -14,13 +14,13 @@ const NoteForm = (props) => {
         <button id="delete" className="button" onClick={props.handleDelete}>Delete</button>
         <p>Last Updated:{props.timestamp}</p>
       </div>
+
       <div>
-        <form>
-          <textarea rows="20">
-            {body}
-          </textarea>
-        </form>
+        <div className="small-12 columns">
+          <input onChange={props.handleBodyChange} type="text" placeholder={`${body}`}></input>
+        </div>
       </div>
+
     </div>
   )
 }

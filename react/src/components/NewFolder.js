@@ -3,13 +3,13 @@ import React from "react";
   const NewFolder = (props) => {
 
     return(
-      <div className="column small-5">
+      <div className="column small-3">
         <form>
           <div>
-            <div className="small-12 columns">
+            <div>
               <input onChange={props.handleNameChange} name="nil" id="newFolderData" type="text" placeholder="New Folder"></input>
             </div>
-            <div className="small-3 columns">
+            <div>
               <input onClick={props.handleFolderNew} type="submit"  id="addFolder"></input>
             </div>
           </div>
