@@ -98,23 +98,27 @@ class App extends Component {
 
     return (
       <div id="container">
-        <div className="row columns small-12">
-          <NewNote
-            handleNoteNew={this.handleNoteNew}
-          />
-        </div>
+
         <FolderList
           folderData={this.state.folderData}
           selectedFolderId={this.state.selectedFolderId}
           handleFolderClick={this.handleFolderClick}
           notesData={this.state.notesData}
         />
+
+        <div className="row columns small-6">
+          <NewNote
+            handleNoteNew={this.handleNoteNew}
+          />
+        </div>
+
         <div className="columns small-12">
           <NewFolder
             handleFolderNew={this.handleFolderNew}
             handleNameChange={this.handleNameChange}
           />
         </div>
+
       </div>
     );
   }

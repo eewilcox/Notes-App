@@ -19,7 +19,8 @@ const NoteForm = (props) => {
 
       <div>
         <div className="small-12 columns">
-          <input onChange={props.handleBodyChange} type="text" placeholder={`${body}`}></input>
+          <textarea onChange={props.handleBodyChange} type="text" defaultValue={`${props.body}`}>
+          </textarea>
         </div>
       </div>
 
