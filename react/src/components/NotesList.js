@@ -7,23 +7,38 @@ class NotesList extends Component {
     super(props);
     this.state = {
       selectedNoteId: null,
+      body: "",
     };
-
-
   this.handleNoteClick = this.handleNoteClick.bind(this);
-  this.handleUpdate = this.handleUpdate.bind(this);
   this.handleDelete = this.handleDelete.bind(this);
+  this.handleNoteUpdate = this.handleNoteUpdate.bind(this);
+  this.handleBodyChange = this.handleBodyChange.bind(this);
+  }
 
+  handleBodyChange(event) {
+    let newBody = event.target.value;
+    this.setState({ body: newBody });
+  }
+
+  handleNoteUpdate(event) {
+    event.preventDefault();
+    let fetchBody = { body: this.state.body };
+    let newNotes = [];
+    fetch(`/api/v1/folders/${this.props.selectedFolderId}/notes/${this.state.selectedNoteId}`,
+      { method: "PATCH",
+      body: JSON.stringify(fetchBody) })
+      .then(function(response) {
+        newNotes = response.json();
+        return newNotes;
+      }).then((response) => this.props.handleFolderClick(this.props.selectedFolderId)
+      );
   }
 
   handleNoteClick(id) {
     this.setState({selectedNoteId: id});
   }
 
-
-  handleUpdate() {alert("note updated");}
   handleDelete() {alert("note deleted");}
-
 
 
   render() {
@@ -31,7 +46,7 @@ class NotesList extends Component {
     let notes;
     if (this.props.notesData) {
       notes = this.props.notesData.map(note => {
-        
+
 
         let handleNoteClick = () => {
           this.handleNoteClick(note.id);
@@ -68,9 +83,8 @@ class NotesList extends Component {
             body={note.body}
             timestamp={note.updated_at}
             handleDelete={this.handleDelete}
-            handleUpdate={this.handleUpdate}
-            handleBodyChange={this.props.handleBodyChange}
-            handleNoteNew={this.props.handleNoteNew}
+            handleBodyChange={this.handleBodyChange}
+            handleNoteUpdate={this.handleNoteUpdate}
             />
           )
         }

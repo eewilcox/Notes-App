@@ -23,6 +23,19 @@ class Api::V1::NotesController < ApplicationController
     end
   end
 
+  def update
+
+    @note = Note.find(params[:id])
+    data = JSON.parse(request.body.read)
+    @note.body = data["body"]
+    if @note.save!
+      @notes = Note.all
+      render json: @Notes
+    else
+      render json: {message: "Did not work"}, status: 404
+    end
+  end
+
   # private
   #
   # def note_params

@@ -6,7 +6,7 @@ const NewNote = (props) => {
     <div>
       <form className="row columns small-12">
         <div>
-          <label  className="right">Search:</label>
+          <label  className="right">Search Notes:</label>
         </div>
         <div>
           <input type="text" placeholder="search here"></input>

@@ -10,8 +10,10 @@ const NoteForm = (props) => {
   return(
     <div>
       <div>
-        <button id="update" className="button" onClick={props.handleUpdate}>Update</button>
+        <button id="update" className="button" onClick={props.handleNoteUpdate}>Update</button>
+
         <button id="delete" className="button" onClick={props.handleDelete}>Delete</button>
+
         <p>Last Updated:{props.timestamp}</p>
       </div>
 
