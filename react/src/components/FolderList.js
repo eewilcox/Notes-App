@@ -8,7 +8,10 @@ class FolderList extends Component {
     super(props);
     this.state = {
     };
+
   }
+
+
 
   render() {
 
@@ -17,6 +20,10 @@ class FolderList extends Component {
       folders = this.props.folderData.map(folder => {
         let handleFolderClick = () => {
           this.props.handleFolderClick(folder.id);
+        };
+
+        let handleDeleteFolder = () => {
+          this.props.handleDeleteFolder(folder.id);
         };
 
         let className;
@@ -31,6 +38,7 @@ class FolderList extends Component {
               id={folder.id}
               name={folder.name}
               handleFolderClick={handleFolderClick}
+              handleDeleteFolder={handleDeleteFolder}
               selectedFolderId={this.props.selectedFolderId}
               className={className}
               />

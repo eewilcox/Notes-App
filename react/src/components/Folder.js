@@ -1,10 +1,14 @@
 import React from 'react';
 
 const Folder = (props) => {
+
   return(
-    <h4 className={props.className} onClick={props.handleFolderClick}>
-    {props.name}
-    </h4>
+    <div>
+      <h5 className={props.className} onClick={props.handleFolderClick}>
+      {props.name}
+      </h5>
+      <button id="deleteFolder" className="button" onClick={props.handleDeleteFolder}>Delete</button>
+    </div>
   )
 
 }

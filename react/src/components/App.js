@@ -18,6 +18,7 @@ class App extends Component {
     this.handleFolderClick = this.handleFolderClick.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleNoteNew = this.handleNoteNew.bind(this);
+    this.handleDeleteFolder = this.handleDeleteFolder.bind(this);
 
   }
 
@@ -77,6 +78,29 @@ class App extends Component {
       });
   }
 
+  handleDeleteFolder(folderId){
+    let fetchBody = { id: folderId };
+    let folderArray = [];
+    fetch(`/api/v1/folders/${folderId}`,
+      { method: "DELETE",
+      body: JSON.stringify(fetchBody)
+      }).then(function(response) {
+          folderArray = response.json();
+          return folderArray;
+      }).then((response) =>
+      fetch('/api/v1/folders')
+            .then(response => {
+              if (response.ok) {
+                return response;
+              }
+            })
+            .then(response => response.json())
+            .then(body => {
+              let data = body;
+
+              this.setState({ folderData: data });
+            })
+  );}
 
   componentDidMount() {
     fetch('/api/v1/folders')
@@ -103,6 +127,7 @@ class App extends Component {
           folderData={this.state.folderData}
           selectedFolderId={this.state.selectedFolderId}
           handleFolderClick={this.handleFolderClick}
+          handleDeleteFolder={this.handleDeleteFolder}
           notesData={this.state.notesData}
         />
 

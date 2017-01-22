@@ -17,6 +17,15 @@ class Api::V1::FoldersController < ApplicationController
     end
   end
 
+  def destroy
+  data = JSON.parse(request.body.read)
+  folder = Folder.find(data["id"])
+  if folder.delete
+    @folders = Folder.all
+    render json: @restaurants
+  end
+end
+
 
   # private
   #
