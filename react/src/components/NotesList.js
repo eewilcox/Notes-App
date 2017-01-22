@@ -29,9 +29,9 @@ class NotesList extends Component {
   render() {
 
     let notes;
-    if (this.props.notesData.notes) {
+    if (this.props.notesData) {
 
-      notes = this.props.notesData.notes.map(note => {
+      notes = this.props.notesData.map(note => {
 
         let handleNoteClick = () => {
           this.handleNoteClick(note.id);
@@ -57,8 +57,8 @@ class NotesList extends Component {
     }
 
     let notesBody;
-    if (this.props.notesData.notes) {
-      notesBody = this.props.notesData.notes.map(note => {
+    if (this.props.notesData) {
+      notesBody = this.props.notesData.map(note => {
         if (this.state.selectedNoteId == note.id) {
 
           return(

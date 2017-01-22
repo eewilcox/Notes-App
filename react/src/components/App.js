@@ -43,7 +43,7 @@ class App extends Component {
   }
 
   handleFolderClick(id) {
-    fetch(`http://localhost:4567/folders/${id}/notes.json`)
+    fetch(`/api/v1/folders/${id}/notes`)
       .then(response => {
         if (response.ok) {
           return response;
