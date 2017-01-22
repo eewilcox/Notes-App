@@ -24,7 +24,6 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def update
-
     @note = Note.find(params[:id])
     data = JSON.parse(request.body.read)
     @note.body = data["body"]
@@ -33,6 +32,16 @@ class Api::V1::NotesController < ApplicationController
       render json: @Notes
     else
       render json: {message: "Did not work"}, status: 404
+    end
+  end
+
+  def destroy
+    data = JSON.parse(request.body.read)
+    @note = Note.find(data["id"])
+
+    if @note.delete
+      @notes = Note.all
+      render json: @notes
     end
   end
 

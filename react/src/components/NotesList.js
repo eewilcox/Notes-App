@@ -38,7 +38,19 @@ class NotesList extends Component {
     this.setState({selectedNoteId: id});
   }
 
-  handleDelete() {alert("note deleted");}
+  handleDelete(event){
+    event.preventDefault();
+    let fetchBody = { id: this.state.selectedNoteId };
+    let noteArray = [];
+    fetch(`/api/v1/folders/${this.props.selectedFolderId}/notes/${this.state.selectedNoteId}`,
+      { method: "DELETE",
+      body: JSON.stringify(fetchBody)
+      }).then(function(response) {
+          noteArray = response.json();
+          return noteArray;
+      }).then((response) =>     this.props.handleFolderClick(this.props.selectedFolderId)
+      );
+  }
 
 
   render() {
@@ -61,7 +73,7 @@ class NotesList extends Component {
           <Note
           key={note.id}
           id={note.id}
-          body={note.body.substring(0,40)}
+          body={note.body.substring(0,30)}
           timestamp={note.updated_at}
           handleNoteClick={handleNoteClick}
           className={className}
