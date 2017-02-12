@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Folder from "./Folder";
 import NotesList from "./NotesList";
 
-
 class FolderList extends Component {
   constructor(props) {
     super(props);
@@ -10,8 +9,6 @@ class FolderList extends Component {
     };
 
   }
-
-
 
   render() {
 
