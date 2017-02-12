@@ -4,7 +4,7 @@
 
 Notes-App is an application where users can create folders and notes to keep track of things. This is a single page application that utilizes React.js and lives within a Rails framework. Content is saved in a PostgreSQL database.
 
-![Notes App](./app/assets/img.png)
+![Notes-App](img.png)
 
 ## Local Setup
 
