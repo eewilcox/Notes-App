@@ -137,7 +137,7 @@ class App extends Component {
           />
         </div>
 
-        <div className="columns small-12">
+        <div id="folder-bar" className="columns small-12">
           <NewFolder
             handleFolderNew={this.handleFolderNew}
             handleNameChange={this.handleNameChange}

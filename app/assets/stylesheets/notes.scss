@@ -1,5 +1,39 @@
+* {
+  font-family: 'Economica', sans-serif;
+}
+
+.border {
+  background-color: #FAFAFD;
+  padding: 1%;
+}
+
+h1 {
+  font-family: 'Economica', sans-serif;
+}
+
+p {
+  font-family: 'Economica', sans-serif;
+}
+
+#container {
+  background-color: #FAFAFD;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
 .selected {
-  color: blue;
+  color: #038DBE;
+}
+
+.callout {
+  background-color: #A5E7FD;
+}
+
+.callout p{
+  background-color: #A5E7FD;
+}
+
+.button {
+  background-color: #038DBE;
 }
 
 #editing {
@@ -11,9 +45,30 @@
   text-align: center;
   height: 15px;
   padding: .2em;
-  background-color: #673A3C;
+  background-color: #038DBE;
 }
 
 h5 {
-  margin: 0
+  font-family: 'Economica', sans-serif;
+}
+
+input {
+  font-family: 'Economica', sans-serif;
+  font-weight: bold;
+  background-color: #DDE1EA;
+}
+
+#folder-names {
+  padding-left: 2.2%;
+  margin-right: 0%;
+}
+
+#folder-bar {
+  background-color: #FAFAFD;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding-bottom: 3%;
+}
+
+#note-bar {
+  width: 77.5%;
 }
