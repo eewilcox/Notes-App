@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><%= content_for?(:title) ? yield(:title) : "Notes App" %></title>
-
+    <link href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet">
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+
   </head>
 
   <body>
-    <div class="row columns 12">
-      <h1 class="columns small-4">Folders</h1>
-      <h1 class="columns small-4">Notes</h1>
-      <h1 class="columns small-4">Editing</h1>
+    <div class="border">
+      <div class="columns">
+        <h1 class="heading columns small-4">Folders</h1>
+        <h1 class="heading columns small-4">Notes</h1>
+        <h1 class="heading columns small-4">Editing</h1>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
-
   </body>
 </html>

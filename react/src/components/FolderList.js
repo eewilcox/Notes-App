@@ -46,7 +46,7 @@ class FolderList extends Component {
 
     return(
       <div>
-        <div className="columns small-3">
+        <div id="folder-names" className="columns small-3">
           {folders}
         </div>
         <div className="column small-9">
