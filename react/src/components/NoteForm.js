@@ -7,10 +7,15 @@ const NoteForm = (props) => {
     body = props.body;
   }
 
+  let glow;
+  if (props.glow) {
+    glow = "glow";
+  }
+
   return(
     <div>
       <div>
-        <button id="update" className="button" onClick={props.handleNoteUpdate}>Update</button>
+        <button id="update" className={`${glow} button`} onClick={props.handleNoteUpdate}>Update</button>
 
         <button id="delete" className="button" onClick={props.handleDelete}>Delete</button>
 
