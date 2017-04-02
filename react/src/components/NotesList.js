@@ -8,6 +8,7 @@ class NotesList extends Component {
     this.state = {
       selectedNoteId: null,
       body: "",
+      glow: null,
     };
   this.handleNoteClick = this.handleNoteClick.bind(this);
   this.handleDelete = this.handleDelete.bind(this);
@@ -18,6 +19,7 @@ class NotesList extends Component {
   handleBodyChange(event) {
     let newBody = event.target.value;
     this.setState({ body: newBody });
+    this.setState({ glow: "glow" });
   }
 
   handleNoteUpdate(event) {
@@ -30,7 +32,8 @@ class NotesList extends Component {
       .then(function(response) {
         newNotes = response.json();
         return newNotes;
-      }).then((response) => this.props.handleFolderClick(this.props.selectedFolderId)
+      }).then((response) => this.props.handleFolderClick(this.props.selectedFolderId),
+      this.setState({ glow: null})
       );
   }
 
@@ -73,7 +76,7 @@ class NotesList extends Component {
           <Note
           key={note.id}
           id={note.id}
-          body={note.body.substring(0,30)}
+          body={note.body.substring(0,75)}
           timestamp={note.updated_at}
           handleNoteClick={handleNoteClick}
           className={className}
@@ -97,6 +100,7 @@ class NotesList extends Component {
             handleDelete={this.handleDelete}
             handleBodyChange={this.handleBodyChange}
             handleNoteUpdate={this.handleNoteUpdate}
+            glow={this.state.glow}
             />
           )
         }
